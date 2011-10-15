@@ -1,0 +1,62 @@
+desc "Release a new <%= name %> version"
+task :release, :version do |task, args|
+  if (args[:version] || "").strip.empty?
+    puts "usage: rake release[version]"
+    exit
+  end
+
+  timestamp  = Time.now
+  javascript = File.open("src/<%= file_name %>").readlines.collect do |line|
+    line.gsub(/\{(version|year|date)\}/) do |matched|
+      case matched
+      when "{version}"
+        args[:version]
+      when "{year}"
+        timestamp.year.to_s
+      when "{date}"
+        timestamp.strftime("%Y-%m-%d %H:%M:%S +0200 (%a, %d %B %Y)")
+      end
+    end
+  end
+
+  # Define variables
+  releases_dir = "releases"
+  release_dir  = "#{releases_dir}/#{args[:version]}"
+  latest_dir   = "#{releases_dir}/latest"
+
+  # Create directories
+  FileUtils.rm_r(release_dir) if File.exists?(release_dir)
+  FileUtils.rm_r(latest_dir)  if File.exists?(latest_dir)
+  FileUtils.mkdir_p("#{release_dir}<%= '/jquery' if jquery %>")
+
+  # Copy files
+  FileUtils.cp("CHANGELOG.rdoc", "#{release_dir}/CHANGELOG.rdoc")
+  FileUtils.cp("README.textile", "#{release_dir}/README.textile")
+  <%- if jquery -%>
+  FileUtils.cp("src/jquery/core.js", "#{release_dir}/jquery")
+  <%- end -%>
+
+  # Write Javascript library
+  File.open("#{release_dir}/<%= file_name %>", "w").puts(javascript)
+
+  # Copy demo
+  FileUtils.cp_r("demo", "#{release_dir}/demo")
+  html = File.open("#{release_dir}/demo/index.html").readlines.collect do |line|
+    line.gsub(%r{(#{Regexp.escape("../src")})}) do |matched|
+      case matched
+      when "../src"
+        ".."
+      end
+    end
+  end
+  File.open("#{release_dir}/demo/index.html", "w").puts(html)
+
+  # Update VERSION
+  File.open("VERSION", "w").puts(args[:version])
+
+  # Compress release using YUI compressor and update the latest release dir
+  IO.popen <<-CONSOLE
+    java -jar lib/yuicompressor-2.4.2.jar -v #{release_dir}/<%= file_name %> -o #{release_dir}/<%= file_name.gsub(/\.js$/, ".min.js") %>
+    cp -R #{release_dir} #{latest_dir}
+  CONSOLE
+end

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>
+      <%= github %>@github: /<%= repository %> - demo
+    </title>
+    <link href="assets/style.css" type="text/css" rel="stylesheet" media="screen"/>
+    <script src="../src/<%= file_name %>"  type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="page">
+      <div id="page_wrapper">
+        <div id="page_header">
+          <h1>
+            <a href="https://github.com/<%= github %>/<%= repository %>"><%= name %></a>
+          </h1>
+          <h2><%= small_description %></h2>
+        </div>
+        <ul id="page_menu">
+          <li>
+            <a href="https://github.com/<%= github %>/<%= repository %>">Github repository</a>
+          </li>
+          <li class="separator">-</li>
+          <li>
+            Download
+            <a href="http://github.com/<%= github %>/<%= repository %>/zipball/master">ZIP</a>
+            /
+            <a href="http://github.com/<%= github %>/<%= repository %>/tarball/master">TAR</a>
+          </li>
+          <%- unless twitter.empty? -%>
+          <li class="separator">-</li>
+          <li>
+            <a href="http://twitter.com/<%= twitter %>">@<%= twitter %></a>
+          </li>
+          <%- end -%>
+          <li class="separator">-</li>
+          <li>
+            <a href="mailto:<%= email %>"><%= email.gsub(/^[^@]+/, "") %></a>
+          </li>
+        </ul>
+        <div id="page_content">
+          <a href="#" onclick="<%= class_name %>.sayHi()">Click here!</a>
+        </div>
+      </div>
+    </div>
+    <div id="page_footer">
+      made by
+      <a href="mailto:<%= email %>"><%= author %></a>
+      <%- unless company.empty? -%>
+      <span class="separator">-</span>
+      <%= "<a href='#{company_url}'>" unless company_url.blank? %><%= company %><%= "</a>" unless company_url.blank? %>
+      <%- end -%>
+    </div>
+  </body>
+</html>

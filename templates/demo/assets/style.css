@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+html, body {
+  height: 100%; }
+
+body {
+  color: #222;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.35px;
+  text-shadow: #FFF 0 2px 0;
+  background: #E0E0E0 url(bg.gif) repeat-x 0 295px; }
+
+fieldset, img {
+  border: 0; }
+
+pre, input, textarea {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; }
+
+pre {
+  margin: 0 auto;
+  margin-top: 70px;
+  width: 400px;
+  font-size: 13.5px;
+  line-height: 1.25;
+  letter-spacing: -0.15px;
+  text-align: left; }
+
+table {
+  border-collapse: collapse; }
+
+ol, ul {
+  list-style: none; }
+
+p {
+  line-height: 150%; }
+
+a {
+  color: #222;
+  outline: 0;
+  text-decoration: none;
+  border-bottom: 1px dotted; }
+  a:hover {
+    border-bottom: 2px solid; }
+  h1 a, h1 a:hover, h2 a, h2 a:hover, li a, li a:hover {
+    border: 0; }
+
+#page {
+  min-height: 100%;
+  position: relative; }
+
+#page_wrapper {
+  width: 920px;
+  margin: auto; }
+
+#page_header {
+  padding-top: 110px;
+  padding-bottom: 65px;
+  text-align: center; }
+  #page_header h1 {
+    padding-bottom: 1px;
+    font-size: 65px;
+    letter-spacing: -4px;
+    line-height: 1; }
+    #page_header h1 a {
+      padding: 0 7px 0 3px; }
+    #page_header h1 a:hover {
+      color: #EEE;
+      text-shadow: 0 0;
+      background: #262626; }
+  #page_header h2 {
+    font-size: 18px; }
+
+#page_menu {
+  text-align: center; }
+  #page_menu li {
+    padding: 0 4px;
+    font-size: 11px;
+    display: -moz-inline-block;
+    display: inline-block;
+    *display: inline;
+    zoom: 1; }
+    #page_menu li a {
+      padding-bottom: 2px; }
+    #page_menu li a:hover {
+      border-bottom: 1px solid #333; }
+
+#page_content {
+  padding-top: 90px;
+  padding-bottom: 175px;
+  text-align: center; }
+  #page_content a {
+    font-size: 19px;
+    font-weight: bold; }
+
+#page_footer {
+  height: 100px;
+  margin-top: -110px;
+  padding-top: 10px;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  position: relative;
+  background: url(bg.gif) repeat-x top; }
+  #page_footer a {
+    border: 0;
+    padding-bottom: 2px; }
+  #page_footer a:hover {
+    border-bottom: 1px dotted #333; }
+  #page_footer span.separator {
+    padding: 0 8px;
+    display: -moz-inline-block;
+    display: inline-block;
+    *display: inline;
+    zoom: 1; }

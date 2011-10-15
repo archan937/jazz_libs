@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "jazz_libs/cli"
+
+begin
+  JazzLibs::CLI.start
+rescue JazzLibs::CLI::Error => e
+  puts e.message.red
+end

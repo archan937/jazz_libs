@@ -1,0 +1,5 @@
+= <%= name %> CHANGELOG
+
+== Version 0.0.1 (<%= now.strftime "%B xxx, %Y" %>)
+
+* Initial release

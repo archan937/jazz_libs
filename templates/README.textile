@@ -1,0 +1,70 @@
+h1. <%= name %>
+
+<%= small_description %>
+
+h2. Introduction
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+h2. Installation
+<%- if jquery -%>
+
+h3. When including jQuery yourself
+
+Just include <%= name %> after you have included jQuery:
+
+<pre>
+  <script src="path/to/jquery.js" type="text/javascript"></script>
+  <script src="path/to/<%= file_name %>" type="text/javascript"></script>
+</pre>
+
+*Note*: include @<%= file_name.gsub(/\.js$/, ".min.js") %>@ for the minified version
+
+h3. When letting <%= name %> include jQuery automatically
+
+Make sure you put the @jquery@ directory in the same directory as the <%= name %> library:
+
+<pre>
+  |-<%= file_name %>
+  |~jquery
+    `-core.js
+</pre>
+<%- end -%>
+
+Just include <%= name %>:
+
+<pre>
+  <script src="path/to/<%= file_name %>" type="text/javascript"></script>
+</pre>
+
+*Note*: include @<%= file_name.gsub(/\.js$/, ".min.js") %>@ for the minified version
+
+h2. Usage
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.
+
+h2. Contact me
+
+For support, remarks and requests please mail me at "<%= email %>":mailto:<%= email %>.
+<%- if jquery -%>
+
+h2. Credit
+
+This Javascript library depends on the "jQuery":http://jquery.com library:
+
+"http://jquery.com":http://jquery.com
+<%- end -%>
+
+h2. License
+
+Copyright (c) <%= now.strftime "%Y" %> <%= author %>, released under the MIT license
+
+<%= "\"#{company_url}\":#{company_url} – " unless company_url.blank? %>"http://github.com/<%= github %>":http://github.com/<%= github %> – <% unless twitter.empty? %>"http://twitter.com/<%= twitter %>":http://twitter.com/<%= twitter %> – <% end %>"<%= email %>":mailto:<%= email %>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
