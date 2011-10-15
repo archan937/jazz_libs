@@ -1,12 +1,30 @@
 h1. JazzLibs
 
-A small gem for generating a Javascript library repository
+A small gem for rolling out JS libraries (includes repository, demo page and version release rake task)
 
 h2. Introduction
 
-*WARNING: THIS GEM IS NOT AVAILABLE YET*
+As I am a passionate Ruby and Javascript programmer, I have created and published several Javascript libraries (and Ruby gems) on Github:
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+* "TopUp":http://gettopup.com - A 100% unobtrusive Apple-styled Lightbox
+* "RaccoonTip":https://github.com/archan937/raccoon_tip - A lightweight, unobtrusive balloon tip
+* "SeatHolder":https://github.com/archan937/seat_holder - A modest placeholder library
+* "csonv.js":https://github.com/archan937/csonv.js - A tiny library to fetch relational CSV data at client-side just like JSON
+* "oned.js":https://github.com/archan937/oned.js - Trigger callback functions when native HTML or jQuery elements get added to the DOM tree
+
+During this process, I have developed a routine repository structure. So to make my life a little bit easier, I have created @JazzLibs@ which generates a repository containing the routine files:
+
+* .gitignore file
+* changelog
+* demo page
+* readme
+* MIT license
+* version file
+* jQuery core library
+* the Javascript library
+* rakefile containg a rake task for releasing library versions
+
+I hope this will help you getting started developing new Javascript libraries as it does for me. Suggestions, questions and remarks are very welcome! ^^
 
 h2. Installation
 
@@ -26,6 +44,25 @@ Run the following command to create a Javascript library repository:
 
 *Note*: You will be asked a couple questions concerning the library (e.g. a small description, your Twitter name).
 
+h3. Releasing a new version
+
+The generated library repository contains a rake task with which you can release new versions with ease. Just run the following command in the console:
+
+<pre>
+  rake release[VERSION]
+</pre>
+
+*Note*: Replace @VERSION@ with the actual version number (e.g. @rake release[0.1.8]@)
+
+A directory will be created containing the new version within @/releases/VERSION@, it includes the following:
+
+* CHANGELOG.rdoc
+* README.textile
+* jquery/core.js (only when applicable of course)
+* the uncompressed library source (e.g. @mix_table.js@)
+* the minified library source (e.g. @mix_table.min.js@)
+* the demo page
+
 h2. Contact me
 
 For support, remarks and requests please mail me at "paul.engel@holder.nl":mailto:paul.engel@holder.nl.
@@ -35,6 +72,8 @@ h2. Credit
 The generated Javascript library structure is based on Eric Miraglia's ("@miraglia":http://twitter.com/miraglia) JavaScript Module Pattern:
 
 "http://www.yuiblog.com":http://www.yuiblog.com / "the-blog-post":http://www.yuiblog.com/blog/2007/06/12/module-pattern/
+
+The minification of the Javascript library is made possible by "Yahoo's YUI compressor":http://developer.yahoo.com/yui/compressor/.
 
 h2. ToDo's
 
