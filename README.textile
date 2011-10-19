@@ -16,7 +16,7 @@ During this process, I have developed a routine repository structure. So to make
 
 * .gitignore file
 * changelog
-* demo page ("an online example":http://archan937.github.com/csonv.js)
+* demo page ("an online example":http://archan937.github.com/jazz_libs)
 * readme
 * MIT license
 * version file
