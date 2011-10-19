@@ -70,6 +70,7 @@ namespace :assets do
     require "bundler"
     Bundler.require :default
 
+    # `jzip --watch src/assets/jzip:src --style compressed`
     `sass --watch src/assets/sass:src --style compressed`
   end
 end

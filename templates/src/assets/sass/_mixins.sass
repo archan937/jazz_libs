@@ -1,18 +1,21 @@
 =absolute
   position: absolute
 
-=opacity(!opacity)
-  opacity: !opacity !important
-  -moz-opacity: !opacity !important
-  -khtml-opacity: !opacity !important
-  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round(!opacity * 100)})") !important
+=relative
+  position: relative
 
-=border_radius(!radius)
-  border-radius = !radius
-  -moz-border-radius = !radius
-  -webkit-border-radius = !radius
+=opacity($opacity)
+  opacity: $opacity !important
+  -moz-opacity: $opacity !important
+  -khtml-opacity: $opacity !important
+  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})") !important
 
-=box_shadow(!color, !x, !y, !size)
-  box-shadow: !color !x !y !size
-  -moz-box-shadow: !color !x !y !size
-  -webkit-box-shadow: !color !x !y !size
+=border_radius($radius)
+  border-radius: $radius
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+
+=box_shadow($color, $x, $y, $size)
+  box-shadow: $color $x $y $size
+  -moz-box-shadow: $color $x $y $size
+  -webkit-box-shadow: $color $x $y $size

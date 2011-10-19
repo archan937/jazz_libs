@@ -15,6 +15,15 @@ if (typeof(<%= class_name %>) == "undefined") {
   var css  = '<style>{style}</style>';
   var html = '<div id="bx" class="hidden"><div class="bx_content"></div></div>';
 
+  var bind = function() {
+    $("body").mousedown(function(event) {
+      var target = $(event.target);
+      if (target.closest("#bx").length == 0) {
+        jQuery("#bx").addClass("hidden");
+      }
+    });
+  };
+
   var injectCode = function() {
     if (!jQuery("head").length) {
       jQuery(document.body).before("<head></head>");
@@ -24,15 +33,16 @@ if (typeof(<%= class_name %>) == "undefined") {
   };
 
   var sayHi = function() {
-    var hi = "Hi, my name is <%= name %><%= ' and I am jQuery (" + jQuery.fn.jquery + ") based' if jquery %>!";
+    var hi = "Hi, my name is <%= name %><%= ' and I am jQuery (" + jQuery.fn.jquery + ") based' if jquery %>!<br>Also, my CSS is compiled with SASS!";
     // alert(hi);
-    jQuery("#bx").find(".bx_content").html(hi).end().show();
+    jQuery("#bx").find(".bx_content").html(hi).end().removeClass("hidden");
   };
 
   return {
     version: "{version}",
     init: function() {
       jQuery(function() {
+        bind();
         injectCode();
         if (typeof(on<%= class_name %>Ready) == "function") {
           on<%= class_name %>Ready();
