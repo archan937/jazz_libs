@@ -58,4 +58,11 @@ if (typeof(<%= class_name %>) == "undefined") {
 <%= class_name %>.init();
 <%- end -%>
 
+/* Implement indexOf ourselves as IE does not support it */
+
+Array.indexOf || (Array.prototype.indexOf = function(v) {
+  for (var i = this.length; i-- && this[i] != v;);
+  return i;
+});
+
 }
