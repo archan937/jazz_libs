@@ -1,0 +1,5 @@
+= FooBar.js CHANGELOG
+
+== Version 0.0.1 (October xxx, 2011)
+
+* Initial release
