@@ -7,7 +7,7 @@ task :release, :version do |task, args|
 
   timestamp  = Time.now
   javascript = File.open("src/<%= file_name %>").readlines.collect do |line|
-    line.gsub(/\{(version|year|date)\}/) do |matched|
+    line.gsub(/\{(version|year|date|style)\}/) do |matched|
       case matched
       when "{version}"
         args[:version]
