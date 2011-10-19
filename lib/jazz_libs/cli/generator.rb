@@ -62,6 +62,7 @@ module JazzLibs
 
       def install_default_files
         template  "CHANGELOG.rdoc"
+        template  "Gemfile"
         template  "MIT-LICENSE"
         template  "Rakefile"
         template  "README.textile"
@@ -69,6 +70,7 @@ module JazzLibs
         directory "demo"
         directory "lib"
         template  "demo/index.html", :force => true
+        directory "src/assets"
         directory "src/jquery" if jquery
         template  "src/lib.js", File.expand_path("src/#{file_name}", self.destination_root)
 

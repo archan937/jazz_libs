@@ -12,16 +12,32 @@ if (typeof(<%= class_name %>) == "undefined") {
 // *
 
 <%= class_name %> = (function() {
-  var foo = null, bar = true;
+  var css  = '<style>{style}</style>';
+  var html = '<div id="bx" class="hidden"><div class="bx_content"></div></div>';
+
+  var injectCode = function() {
+    if (!jQuery("head").length) {
+      jQuery(document.body).before("<head></head>");
+    }
+    jQuery(css).prependTo("head");
+    jQuery(html).appendTo("body");
+  };
 
   var sayHi = function() {
-    alert("Hi, my name is <%= name %><%= ' and I am jQuery (" + jQuery.fn.jquery + ") based' if jquery %>!");
+    var hi = "Hi, my name is <%= name %><%= ' and I am jQuery (" + jQuery.fn.jquery + ") based' if jquery %>!";
+    // alert(hi);
+    jQuery("#bx").find(".bx_content").html(hi).end().show();
   };
 
   return {
     version: "{version}",
     init: function() {
-      // do something
+      jQuery(function() {
+        injectCode();
+        if (typeof(on<%= class_name %>Ready) == "function") {
+          on<%= class_name %>Ready();
+        };
+      });
     },
     sayHi: sayHi
   };
